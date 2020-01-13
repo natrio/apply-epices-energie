@@ -1,0 +1,49 @@
+version: '2.4'
+
+x-app: &app
+  build:
+    context: .
+    dockerfile: ./.dockerdev/Dockerfile
+    args:
+      RUBY_VERSION: '2.6.3'
+      PG_MAJOR: '12'
+      NODE_MAJOR: '13'
+      YARN_VERSION: '1.21.1'
+      BUNDLER_VERSION: '2.1.4'
+  environment: &env
+    NODE_ENV: development
+    RAILS_ENV: ${RAILS_ENV:-development}
+  image: apply-mt
+  tmpfs:
+    - /tmp
+
+x-backend: &backend
+  <<: *app
+  stdin_open: true
+  tty: true
+  volumes:
+    - .:/app:cached
+    - rails_cache:/app/tmp/cache
+    - bundle:/usr/local/bundle
+    - node_modules:/app/node_modules
+    - packs:/app/public/packs
+    - .dockerdev/.bashrc:/root/.bashrc:ro
+  environment:
+    <<: *env
+    BOOTSNAP_CACHE_DIR: /usr/local/bundle/_bootsnap
+    WEB_CONCURRENCY: 1
+    EDITOR: nano
+
+services:
+  runner:
+    <<: *backend
+    container_name: runner_apply_ee
+    command: /bin/bash
+    ports:
+      - '3000:3000'
+
+volumes:
+  bundle:
+  node_modules:
+  rails_cache:
+  packs:
