@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ref: MyString
+  datetime: 2020-01-14 18:21:57
+  energy: 1.5
+  photovoltaic_power_station: one
+
+two:
+  ref: MyString
+  datetime: 2020-01-14 18:21:57
+  energy: 1.5
+  photovoltaic_power_station: two
