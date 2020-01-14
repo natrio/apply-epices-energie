@@ -1,0 +1,2 @@
+class PhotovoltaicPowerStation < ApplicationRecord
+end
