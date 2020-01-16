@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @test = 'Une long text sous une pluit battante !'
+    @power_stations = PowerStation.all
   end
 end

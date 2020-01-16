@@ -1,7 +1,11 @@
 class SolarInverterRecord < ApplicationRecord
-  belongs_to :photovoltaic_power_station, :optional => false
+  belongs_to :power_station, :optional => false
 
   validates :ref, :datetime, :energy, presence: true
+
+
+  scope :dates_to_consolidate, -> { self.where("date NOT IN (?)", DailyPowerRecord.select(:date)).group(:date) }
+  scope :all_by_date, -> (date) { self.where(date: date) }
 
   def self.remove_duplicate
     loop do

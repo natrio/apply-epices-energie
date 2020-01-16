@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PowerStationTest < ActiveSupport::TestCase
+class ConsolidateJobTest < ActiveJob::TestCase
   # test "the truth" do
   #   assert true
   # end

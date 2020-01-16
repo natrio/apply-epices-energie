@@ -1,0 +1,18 @@
+<h1><%= @power_station.name %></h1>
+
+<div class="card">
+  <div class="card-body">
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+      <th>#Date</th>
+      <th>#Energie produite</th>
+      </thead>
+      <% @records.each do |date, energy| %>
+        <tr>
+          <td><%= date.strftime('%e/%m/%Y @ %Hh%M') %></td>
+          <td><%= energy %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

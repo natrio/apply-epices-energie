@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PowerStationTest < ActiveSupport::TestCase
+class ImporterControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

@@ -1,15 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>App</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>App</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item <%= 'active' if current_page?(root_url) %>">
+          <a class="nav-link" href="<%= root_url %>"> Stations photovoltaique</a>
+        </li>
+      </ul>
+      <%= form_with(url: power_station_index_path, :class => 'form-inline', local: true) do %>
+        <input class="form-control mr-sm-2" type="text" placeholder="Saisir un nouveau nom" name="name">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Créer une nouvelle Station</button>
+      <% end %>
+    </div>
+  </nav>
+
+  <%= flash_messages %>
+
+  <div class="row">
+    <div class="col-12">
+      <%= yield %>
+    </div>
+  </div>
+</div>
+</body>
 </html>

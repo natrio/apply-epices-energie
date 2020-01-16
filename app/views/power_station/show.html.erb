@@ -1,0 +1,22 @@
+<h1><%= @power_station.name %></h1>
+
+<div class="card">
+  <div class="card-body">
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+      <th>#id</th>
+      <th>#Date</th>
+      <th>#Energie produite</th>
+      <th></th>
+      </thead>
+      <% @records.each do |record| %>
+        <tr>
+          <td><%= record.id %></td>
+          <td><%= record.date.strftime('%m/%d/%Y') %></td>
+          <td><%= record.energy %></td>
+          <td><%= link_to('Voir le détail', power_station_daily_records_path(@power_station, date: record.date), class: 'btn btn-secondary') %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
