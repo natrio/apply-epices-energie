@@ -2,7 +2,7 @@
   <div class="col-4">
     <div class="card">
       <div class="card-body">
-        <%= form_tag power_station_importer_path, multipart: true, :method => 'post'  do %>
+        <%= form_tag power_station_importers_path, multipart: true, :method => 'post'  do %>
           <div class="form-group">
             <%= file_field :importer, :files, multiple: true, accept: ['.csv'], class: 'form-control' %>
           </div>
